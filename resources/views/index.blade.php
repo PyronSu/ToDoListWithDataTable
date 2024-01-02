@@ -119,6 +119,24 @@ function add(){
     $('#todoForm').trigger("reset");
     $('#id').val('');
 }
-    </script>
+
+function editFunc(id){
+    $.ajax({
+        type: "POST",
+        url: "{{url('edit')}}",
+        data: {id:id},
+        dataType: "json",
+        success: function(res){
+            console.log(res);
+            $('#todo-modal').modal('show');
+            $('#id').val(res.id);
+            $('#task').val(res.task);
+        },
+        error: function(){
+            console.log("error");
+        }
+    });
+}
+</script>
 </body>
 </html>

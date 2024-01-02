@@ -1,2 +1,2 @@
-<a href="" class="btn btn-success">Edit</a>
-<a href="" class="btn btn-danger">Delete</a>
+<a href="javascript:void(0)" class="btn btn-success" onclick="editFunc({{$id}})">Edit</a>
+<a href="javascript:void(0)" class="btn btn-danger">Delete</a>

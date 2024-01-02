@@ -22,5 +22,6 @@ Route::get('/', function () {
 Route::get('index',[TaskController::class,'index']);
 
 Route::post('store',[TaskController::class,'store']);
+Route::post('edit',[TaskController::class,'edit']);
 
 

@@ -26,6 +26,12 @@ class TaskController extends Controller
         );
         return Response()->json($task);
     }
+
+    public function edit(Request $request){
+        $where = array('id'=>$request->id);
+        $task = Task::where($where)->first();
+        return Response()->json($task);
+    }
     // public function store2(Request $request){
     //     $employeeId = $request->id;
 
