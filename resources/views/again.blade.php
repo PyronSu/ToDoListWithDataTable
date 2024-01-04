@@ -10,9 +10,9 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="javascript:void(0)" id="categoryForm">
-                <input type="hidden" name="id">
-                Create new Category: <input type="text" name="category" id="category"> <input type="submit" id="submitBtn" value="CREATE">
+            <form action="javascript:void(0)" id="categoryForm" method="POST">
+                <input type="hidden" name="id" id="id">
+                Create new Category: <input type="text" name="category" id="category"> <input type="submit" id="btn-save" value="CREATE">
             </form>
         </div>
       </div>
@@ -70,6 +70,7 @@ $(document).ready(function(){
                 var oTable2 = $('#categoryTable').dataTable();
                 oTable2.fnDraw(false);
                 $('#categoryModal').modal('hide');
+                $('#btn-save').attr("disabled", false);
             },
             error: function(data){console.log("error");}
         });
@@ -78,15 +79,13 @@ $(document).ready(function(){
     function editFunc(id){
         $.ajax({
             type: "POST",
-            url: "{{ url('editCategory') }}",
+            url: "{{url('editCategory')}}",
             data: {id:id},
-            dataType: 'json',
+            dataType:"json",
             success: function(res){
                 $('#categoryModal').modal('show');
-                $('#modalLabel').html('Edit Category Name');
                 $('#id').val(res.id);
                 $('#category').val(res.title);
-
             },
             error: function(){
                 console.log("error");
