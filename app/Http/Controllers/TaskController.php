@@ -10,7 +10,7 @@ class TaskController extends Controller
     public function index(){
         if(request()->ajax()){
             return datatables()->of(Task::select('*'))
-            ->addColumn('action','task-actions')
+            ->addColumn('action','take-actions')
             ->rawColumns(['action'])
             ->addIndexColumn()
             ->make(true);
@@ -30,6 +30,11 @@ class TaskController extends Controller
     public function edit(Request $request){
         $where = array('id'=>$request->id);
         $task = Task::where($where)->first();
+        return Response()->json($task);
+    }
+
+    public function delete(Request $request){
+        $task = Task::where('id',$request->id)->delete();
         return Response()->json($task);
     }
     // public function store2(Request $request){

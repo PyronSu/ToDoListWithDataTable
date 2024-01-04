@@ -2,7 +2,9 @@
 
 use App\Models\DataTable;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AreaController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\AjaxAgainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +25,12 @@ Route::get('index',[TaskController::class,'index']);
 
 Route::post('store',[TaskController::class,'store']);
 Route::post('edit',[TaskController::class,'edit']);
+Route::post('delete',[TaskController::class,'delete']);
+
+
+//AREA
+Route::get('again',[AjaxAgainController::class,'show']);
+Route::post('storeArea',[AjaxAgainController::class,'storeArea']);
+Route::post('editCategory',[AjaxAgainController::class,'editCategory']);
 
 
