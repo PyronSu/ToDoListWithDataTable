@@ -94,8 +94,24 @@ $(document).ready(function(){
         });
     }
 
-    function deleteFunc(){
-
+    function deleteFunc(id){
+        if(confirm("Delete Record?")==true){
+            var id=id;
+            $.ajax({
+                type: "POST",
+                url: "{{url('deleteCategory')}}",
+                data: {id:id},
+                dataType: 'json',
+                success: function(res){
+                    console.log('success');
+                    var oTable = $('#categoryTable').dataTable();
+                    oTable.fnDraw(false);
+                },
+                error: function(){
+                    console.log('error');
+                }
+            });
+        }
     }
 </script>
 @endsection

@@ -32,5 +32,6 @@ Route::post('delete',[TaskController::class,'delete']);
 Route::get('again',[AjaxAgainController::class,'show']);
 Route::post('storeArea',[AjaxAgainController::class,'storeArea']);
 Route::post('editCategory',[AjaxAgainController::class,'editCategory']);
+Route::post('deleteCategory',[AjaxAgainController::class,'delete']);
 
 

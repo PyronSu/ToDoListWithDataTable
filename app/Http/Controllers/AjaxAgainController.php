@@ -33,4 +33,9 @@ class AjaxAgainController extends Controller
         $area = ajaxAgain::where($where)->first();
         return Response()->json($area);
     }
+
+    public function delete(Request $req){
+        $category = ajaxAgain::where('id',$req->id)->delete();
+        return Response()->json($category);
+    }
 }
